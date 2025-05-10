@@ -36,7 +36,7 @@ const FileCard = ({ file }: { file: IFile }) => {
   }
 
   return (
-    <Card className="w-full max-h-60 border-none shadow-none drop-shadow-xl">
+    <Card className="w-full max-h-62 border-[#383838] hover:border-[#ff6913] bg-[#383838] shadow-none drop-shadow-2xl">
       <CardHeader>
         <div className="flex items-start gap-4 justify-between">
           <Avatar className="size-20 rounded-none">
@@ -51,14 +51,15 @@ const FileCard = ({ file }: { file: IFile }) => {
               setIsLinkInProgress={setIsLinkInProgress}
             />
 
-            <P>{formattedFileSize}</P>
+            <P className="text-[#c2c2c2]">{formattedFileSize}</P>
           </div>
         </div>
       </CardHeader>
-      <CardContent className="space-y-2">
+      <CardContent className="space-y-2  text-xl text-white ">
         <P
           size="large"
-          weight="bold"
+          weight="medium"
+          variant="child"
           className={cn(category === "image" && "cursor-pointer")}
           onClick={async () => {
             if (category === "image") {
@@ -89,12 +90,12 @@ const FileCard = ({ file }: { file: IFile }) => {
           {requiredName}
         </P>
 
-        <P size="small" variant="muted" weight="light">
+        <P size="small" variant="muted" weight="light" className="text-[#c2c2c2]">
           {formattedDate}
         </P>
 
-        <P size="small" variant="muted" weight="light">
-          Uploaded By: <b>{userInfo.name}</b>
+        <P size="small" variant="muted" weight="light" className="text-[#c2c2c2]">
+          Uploaded By: <b className="text-[#ff6913]">{userInfo.name}</b>
         </P>
       </CardContent>
     </Card>
