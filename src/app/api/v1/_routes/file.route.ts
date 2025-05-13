@@ -85,7 +85,7 @@ fileRoute.post("/upload", async (c) => {
   try {
     await db();
     const data = await c.req.formData();
-    const DofFile = data.get("file");
+    const file = data.get("file");
     const session = await getServerSession();
 
     if (!session) {
@@ -103,7 +103,7 @@ fileRoute.post("/upload", async (c) => {
     if (subs.selectedStorage <= subs.usedStorage) {
       return c.json({ message: "⚠️ Warning", description: "Storage limit exceeded." }, { status: 400 });
     }
-        const uploadData = await pinata.upload.public.file(DofFile).keyvalues({
+        const uploadData = await pinata.upload.public.file(file).keyvalues({
             userId,
             name,
         });
