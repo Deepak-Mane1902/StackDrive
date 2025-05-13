@@ -3,9 +3,9 @@ import db from "@/lib/database/db";
 import { FilterQuery } from "mongoose";
 import { File } from "@/lib/database/schema/file.model";
 import { Subscription } from "@/lib/database/schema/subscription.model";
-import { pinata } from "@/lib/pinata/config";
 import { getCategoryFromMimeType, parseError } from "@/lib/utils";
 import { Hono } from "hono";
+import { pinata } from "@/lib/pinata/config";
 
 const fileRoute = new Hono();
 const FILE_SIZE = 9;
@@ -85,7 +85,7 @@ fileRoute.post("/upload", async (c) => {
   try {
     await db();
     const data = await c.req.formData();
-    const file = data.get("file");
+    const DofFile = data.get("file");
     const session = await getServerSession();
 
     if (!session) {
@@ -103,7 +103,7 @@ fileRoute.post("/upload", async (c) => {
     if (subs.selectedStorage <= subs.usedStorage) {
       return c.json({ message: "⚠️ Warning", description: "Storage limit exceeded." }, { status: 400 });
     }
-        const uploadData = await pinata.upload.public.file(file).keyvalues({
+        const uploadData = await pinata.upload.public.file(DofFile).keyvalues({
             userId,
             name,
         });
