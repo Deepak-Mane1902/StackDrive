@@ -9,22 +9,28 @@ interface Props {
       | "documents"
       | "images"
       | "videos"
+      | "music"
       | "others"
       | "shared";
   }>;
 }
 
 const page = async ({ params }: Props) => {
-  const page = (await params).page;
+  const pageParam = (await params).page;
+  const key = generatePageKey(pageParam);
 
-  const key = generatePageKey(page);
+  if (!key) {
+    throw new Error(`Invalid page key generated for page: ${pageParam}`);
+  }
+
   return (
     <>
-      <h1 className="capitalize text-3xl font-bold">{page}</h1>
+      <h1 className="capitalize">{pageParam}</h1>
       <br />
-      {page === "subscription" ? <SubscriptionPage /> : <PageFiles page={key} />}
+      {pageParam === "subscription" ? <SubscriptionPage /> : <PageFiles page={key} />}
     </>
   );
 };
+
 
 export default page;

@@ -2,7 +2,6 @@
 
 import FileCard from "@/app/(dashboard)/_components/file-card/card";
 import { P } from "@/components/ui/custom/p";
-
 import { IFile } from "@/lib/database/schema/file.model";
 import { getFiles } from "@/lib/fetch/files.fetch";
 import { RiLoader3Fill } from "@remixicon/react";
@@ -36,6 +35,7 @@ const PageFiles = ({ page }: PageFilesProps) => {
       if (currentPage === newData.totalPages) {
         setIsPageFull(true);
       }
+
 
       queryClient.setQueryData(["files", page], (oldData: unknown) => {
         const oldFiles = (oldData as { files: IFile[] })?.files || [];
@@ -91,16 +91,18 @@ const PageFiles = ({ page }: PageFilesProps) => {
       </P>
     );
 
-  const files = data.files as IFile[];
+  const files = data?.files as IFile[] || [];
 
   if (files?.length === 0)
     return (
       <Image
+      priority
         src="/not-found.png"
         width={400}
         height={400}
         className="m-auto"
         alt="not-found"
+        fetchPriority="high"
       />
     );
 

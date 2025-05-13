@@ -137,7 +137,7 @@ const FileMenu = ({
     <>
       <DropdownMenu>
         {!mutation.isPending && !isLinkInProgress ? (
-          <DropdownMenuTrigger className="hover:border-1 border-[#ff6913] ease-in-out transition-all  bg-[#1D1D21] rounded-[50%] cursor-pointer text-[#d6d6d6] hover:text-[#ff6913] p-2">
+          <DropdownMenuTrigger className="border border-[#1d1d1d] hover:border  hover:border-[#ff6913]  bg-[#1D1D21] rounded-[50%] cursor-pointer text-[#d6d6d6] hover:text-[#ff6913] p-2">
             <KebabMenuIcon />
           </DropdownMenuTrigger>
         ) : (
@@ -325,26 +325,26 @@ export const ShareFileForm = ({
   }
   return (
     <Dialog open={isShareDialogOpen} onOpenChange={setIsShareDialogOpen}>
-      <DialogContent>
+      <DialogContent className="bg-[#101010] text-white border-[#ff6913] rounded-2xl">
         <DialogHeader className="hidden">
           <DialogTitle>title</DialogTitle>
           <DialogDescription>description</DialogDescription>
         </DialogHeader>
         <div>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 text-white">
               {/* Email */}
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel className="flex justify-center text-4xl text-[#ff6913]">Email</FormLabel>
                     <FormControl>
-                      <div className="flex items-center justify-start gap-3 border rounded-2xl px-3 py-2">
-                        <RiShareFill />
+                      <div className="flex items-center justify-start mt-2 border-[#383838] gap-3 border rounded-2xl px-3 py-2">
+                        <RiShareFill className="text-[#ff6913] "/>
                         <Input
-                          className={cn("input")}
+                          className={cn("input border-[#383838] rounded-xl")}
                           placeholder="email here..."
                           {...field}
                           type="email"
@@ -380,6 +380,7 @@ export const ShareFileForm = ({
                             >
                               <FormControl>
                                 <Checkbox
+                                className="cursor-pointer"
                                   checked={field.value?.includes(permission.id)}
                                   onCheckedChange={(checked) => {
                                     return checked
@@ -408,7 +409,7 @@ export const ShareFileForm = ({
                 )}
               />
 
-              <Button disabled={isLoading} type="submit" variant="default">
+              <Button disabled={isLoading} type="submit" variant="default" className="hover:bg-[#d45710] cursor-pointer">
                 {!isLoading ? (
                   "Share"
                 ) : (
@@ -492,26 +493,26 @@ export const RenameFileForm = ({
   }
   return (
     <Dialog open={isRenameDialogOpen} onOpenChange={setIsRenameDialogOpen}>
-      <DialogContent>
+      <DialogContent className="bg-[#101010] border-[#ff6913] rounded-2xl">
         <DialogHeader className="hidden">
           <DialogTitle>title</DialogTitle>
           <DialogDescription>description</DialogDescription>
         </DialogHeader>
         <div>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 text-white">
               {/* Email */}
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>New Name</FormLabel>
+                    <FormLabel className="text-[#ff6913] flex justify-center text-2xl">New Name</FormLabel>
                     <FormControl>
-                      <div className="flex items-center justify-start gap-3 border rounded-2xl px-3 py-2">
-                        <RiFileEditFill />
+                      <div className="flex items-center justify-start gap-3 border p-3 border-[#383838] rounded-2xl px-3 py-2">
+                        <RiFileEditFill className="text-[#ff6913]" />
                         <Input
-                          className={cn("input")}
+                          className={cn("input border border-[#383838] rounded-xl")}
                           placeholder="new name here..."
                           {...field}
                         />

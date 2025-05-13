@@ -88,3 +88,8 @@ export function dynamicDownload(data: Blob | string, name: string) {
 export function ActionResponse<T>(data: T): T {
   return JSON.parse(JSON.stringify(data));
 }
+
+export function formatDate(value: string | number | Date): string {
+  const date = new Date(value);
+  return isNaN(date.getTime()) ? "N/A" : date.toLocaleString();
+}
