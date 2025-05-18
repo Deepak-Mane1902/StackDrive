@@ -7,10 +7,9 @@ import QueryProvider from "@/context/query-provider";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 
 const outfit = Outfit({
-  variable: "--font-outfit",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  display: "swap", // ensures consistent rendering between SSR and client
+  display: "optional", // safer for hydration
 });
 
 export const metadata: Metadata = {
@@ -25,10 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("antialiased", outfit.variable)}>
+      <body className={cn("antialiased", outfit.className)}>
         <QueryProvider>
           {children}
-
           <ClientOnly>
             <Toast
               position="top-right"

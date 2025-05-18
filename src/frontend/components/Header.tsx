@@ -5,16 +5,18 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  const pathname = usePathname();
+
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
-  // Track scroll direction
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -29,6 +31,12 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  // Utility for dynamic class
+  const linkClass = (href: string) =>
+    `cursor-pointer transition-colors duration-200 ${
+      pathname === href ? "text-[#ff6913]" : "text-[#c2c2c2] hover:text-[#ff6913]"
+    }`;
 
   return (
     <header
@@ -57,22 +65,22 @@ const Header = () => {
         role="navigation"
         aria-label="Main Navigation"
       >
-        <ul className="text-[#c2c2c2] flex items-center gap-6 text-base font-semibold">
-          <Link href="/" className="text-[#ff6913] hover:text-[#ff6913] cursor-pointer transition-colors duration-200">
+        <ul className="flex items-center gap-6 text-base font-semibold">
+          <Link href="/" className={linkClass("/")}>
             Home
           </Link>
-          <Link href="/price" className="hover:text-[#ff6913] cursor-pointer transition-colors duration-200">
+          <Link href="/pricing" className={linkClass("/pricing")}>
             Pricing
           </Link>
-          <Link href="/about" className="hover:text-[#ff6913] cursor-pointer transition-colors duration-200">
+          <Link href="/about" className={linkClass("/about")}>
             About
           </Link>
-          <Link href="/contact" className="hover:text-[#ff6913] cursor-pointer transition-colors duration-200">
+          <Link href="/contact" className={linkClass("/contact")}>
             Contact Us
           </Link>
         </ul>
         <Button className="bg-[#ff6913] text-white hover:text-[#ff6913] transition-all duration-200 ease-in-out hover:bg-transparent border border-transparent hover:border-[#ff6913] text-base cursor-pointer">
-          <a href="sign-in ">Register</a>
+          <a href="sign-in">Register</a>
         </Button>
       </nav>
 
@@ -95,30 +103,18 @@ const Header = () => {
       >
         <div className="flex flex-col p-6 pt-20 gap-6 text-[#c2c2c2] bg-[#101010] rounded-lg">
           <ul className="flex flex-col gap-4 text-base font-semibold">
-            <li
-              onClick={closeMenu}
-              className="hover:text-[#ff6913] cursor-pointer transition-colors duration-200 text-[#ff6913]"
-            >
+            <Link href="/" onClick={closeMenu} className={linkClass("/")}>
               Home
-            </li>
-            <li
-              onClick={closeMenu}
-              className="hover:text-[#ff6913] cursor-pointer transition-colors duration-200"
-            >
+            </Link>
+            <Link href="/pricing" onClick={closeMenu} className={linkClass("/pricing")}>
               Pricing
-            </li>
-            <li
-              onClick={closeMenu}
-              className="hover:text-[#ff6913] cursor-pointer transition-colors duration-200"
-            >
+            </Link>
+            <Link href="/about" onClick={closeMenu} className={linkClass("/about")}>
               About
-            </li>
-            <li
-              onClick={closeMenu}
-              className="hover:text-[#ff6913] cursor-pointer transition-colors duration-200"
-            >
+            </Link>
+            <Link href="/contact" onClick={closeMenu} className={linkClass("/contact")}>
               Contact Us
-            </li>
+            </Link>
           </ul>
           <Button
             onClick={closeMenu}
@@ -129,7 +125,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Overlay when menu is open */}
+      {/* Overlay */}
       {menuOpen && (
         <div
           onClick={closeMenu}

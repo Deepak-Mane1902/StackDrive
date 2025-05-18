@@ -8,10 +8,17 @@ import HeroSection from "@/frontend/components/HeroSection";
 import Outro from "@/frontend/components/Outro";
 import TestimonialSlider from "@/frontend/components/Rating";
 import Views from "@/frontend/components/Views";
-import React from "react";// import wrapper
+import dynamic from "next/dynamic";
+import React from "react";
+
+// Dynamically import ScrollProvider to disable SSR (fix document not defined error)
+const ScrollProvider = dynamic(() => import("@/frontend/components/scrollProvider"), {
+  ssr: false,
+});
 
 const Page = () => {
   return (
+    <ScrollProvider>
       <main>
         <Header />
         <HeroSection />
@@ -22,7 +29,7 @@ const Page = () => {
         <Outro />
         <Footer />
       </main>
-
+    </ScrollProvider>
   );
 };
 

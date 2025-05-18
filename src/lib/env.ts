@@ -6,8 +6,11 @@ import 'dotenv/config';
 export const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000  ";
  
 //Backend
- export const BETTER_AUTH_SECRET = process.env.BETTER_AUTH_SECRET || "";
+ export const BETTER_AUTH_SECRET = process.env.BETTER_AUTH_SECRET || "o3b5D5v9pdg7BvBxjtz1qceIOOjWkVK8";
  export const BASE_URL = process.env.BETTER_AUTH_URL || "";
+
+ export const RESEND_API_KEY = process.env.RESEND_API_KEY || "re_hiERrcnc_NeVNgQ9MB6gXZ3kAWyoH443y";
+ export const RESEND_TO_EMAIL = process.env.RESEND_TO_EMAIL || "manedeepak1902@gmail.com";
 
  //Database
  export const MONGODB_URI = process.env.MONGODB_URI  || "mongodb+srv://deepak-mane:WFOuYtdaCQMSOaPO@cluster0.3cw7jnb.mongodb.net/StackDrive?retryWrites=true&w=majority";
