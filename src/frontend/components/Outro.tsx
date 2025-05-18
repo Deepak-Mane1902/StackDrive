@@ -22,7 +22,7 @@ const Outro = () => {
         </div>
 
         <Image
-          src="/outro.png"
+          src="/search.png"
           alt="Productivity tools interface screenshot"
           width={800}
           height={500}
