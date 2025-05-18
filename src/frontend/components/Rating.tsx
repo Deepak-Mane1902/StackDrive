@@ -70,7 +70,7 @@ useEffect(() => {
   return (
     <section className="w-full bg-[#101010] text-white py-12 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-[25vw] sm:text-[3vw] font-extrabold px-30 text-start mb-10 tracking-tight">
+        <h2 className="text-[5vw] sm:text-[3vw] flex  font-extrabold px-30 text-start mb-10 tracking-tight">
           Join the thousands of statisfied StackDrive today <br /> and see What Our Users Say!
         </h2>
 

@@ -11,8 +11,8 @@ const HeroSection = () => {
       <section className="bg-[#101010] text-white w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 py-10 md:py-20 transition-all duration-300">
         <WaveDivider />
         {/* Left Section */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 px-2 md:px-10 leading-tight text-balance">
+        <div className="w-full md:w-1/2 flex flex-col justify-center max-w-2xl ">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 px-2 md:px-10 leading-tight text-balance ">
             Experience the cloud storage with{" "}
             <span className="text-[#ff6913]">StackDrive</span>
           </h1>

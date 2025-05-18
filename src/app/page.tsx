@@ -20,7 +20,7 @@ const Page = () => {
   return (
     <ScrollProvider>
       <main>
-        <Header />
+        <Header /><br />
         <HeroSection />
         <Views />
         <FeaturesSection />
